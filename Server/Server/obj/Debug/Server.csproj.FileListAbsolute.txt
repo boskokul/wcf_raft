@@ -1,0 +1,10 @@
+C:\Users\Dušan\Desktop\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Dušan\Desktop\Server\Server\bin\Debug\Server.exe
+C:\Users\Dušan\Desktop\Server\Server\bin\Debug\Server.pdb
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.exe
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.pdb
+C:\Users\Dušan\Desktop\Server\Server\bin\Debug\System.Web.Cors.dll
+C:\Users\Dušan\Desktop\Server\Server\obj\Debug\Server.csproj.CopyComplete
