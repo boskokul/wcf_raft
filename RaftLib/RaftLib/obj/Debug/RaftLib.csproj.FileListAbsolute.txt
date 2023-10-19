@@ -1,0 +1,14 @@
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\bin\Debug\RaftLib.dll.config
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\bin\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\bin\Debug\RaftLib.pdb
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\obj\Debug\RaftLib.csprojAssemblyReference.cache
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\obj\Debug\RaftLib.csproj.CoreCompileInputs.cache
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\obj\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\radisliradisli\RaftLib\RaftLib\obj\Debug\RaftLib.pdb
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.dll.config
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.pdb
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.csprojAssemblyReference.cache
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.csproj.CoreCompileInputs.cache
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.pdb
