@@ -1,0 +1,8 @@
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\bin\Debug\Server2.exe.config
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\bin\Debug\Server2.exe
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\bin\Debug\Server2.pdb
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\obj\Debug\Server2.csproj.AssemblyReference.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\obj\Debug\Server2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\obj\Debug\Server2.csproj.CoreCompileInputs.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\obj\Debug\Server2.exe
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server2\obj\Debug\Server2.pdb
