@@ -12,7 +12,7 @@ namespace RaftServer
     {
         static void Main(string[] args)
         {
-            string serviceAddress = "127.0.0.1:10001";
+            string serviceAddress = "127.0.0.1:4001";
             string serviceName = "RaftService";
 
             ServiceHost host = new ServiceHost(typeof(Service1), new Uri($"net.tcp://{serviceAddress}/{serviceName}"));

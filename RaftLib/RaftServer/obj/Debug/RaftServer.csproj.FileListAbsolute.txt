@@ -20,3 +20,15 @@ C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftServer\ob
 C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.csproj.CopyComplete
 C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.exe
 C:\Users\bosko\Desktop\radisliradisli\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.pdb
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftServer.exe.config
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftServer.exe
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftServer.pdb
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftLib.dll
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftLib.pdb
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\bin\Debug\RaftLib.dll.config
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.csproj.AssemblyReference.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.csproj.CoreCompileInputs.cache
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.csproj.CopyComplete
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.exe
+C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftServer\obj\Debug\RaftServer.pdb

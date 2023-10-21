@@ -12,7 +12,7 @@ namespace RaftClient
     {
         static void Main(string[] args)
         {
-            string serviceAddress = "127.0.0.1:10001";
+            string serviceAddress = "127.0.0.1:4001";
             string serviceName = "RaftService";
 
             Uri tcpUri = new Uri($"net.tcp://{serviceAddress}/{serviceName}");
@@ -26,15 +26,12 @@ namespace RaftClient
             IService1 service = factory.CreateChannel();
 
             //Testing 
-            Console.Write("Enter the first number: ");
-            int number1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter number: ");
+            int number = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter the second number: ");
-            int number2 = int.Parse(Console.ReadLine());
+            int sum = service.GetMultiplication(number);
 
-            int sum = service.GetSum(number1, number2);
-
-            Console.WriteLine($"Resulting sum = {sum}");
+            Console.WriteLine($"Result= {sum}");
 
             Console.ReadLine();
         }
