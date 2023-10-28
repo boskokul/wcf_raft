@@ -4,40 +4,176 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Timers;
 
 namespace RaftLib
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Service1 : IService1
     {
-        public int GetMultiplication(int num)
+        public int Id { get; set; }
+        public static int LeaderId { get; set; }
+        public string[] Addresses { get; set; }
+        public string[] Names { get; set; }
+        private int _TimerNumber;
+        private Timer Timer;
+        public int VoteRequested { get; set; }
+        public int VotedFor { get; set; }
+        private static Random random = new Random();
+        public Service1(int id, string[] address, string[] names) {
+            Id = id;
+            Addresses= address;
+            Names = names;
+            VotedFor= 0;
+            VoteRequested= 0;
+            _TimerNumber = 1000*(random.Next(1, 6) + 10);
+            StartTimer();
+        }
+
+        private void StartTimer()
         {
-            string serviceAddress2 = "127.0.0.1:4002";
-            string serviceName2 = "RaftService2";
+            Timer = new Timer(_TimerNumber);
+            Timer.AutoReset = true;
+            Timer.Elapsed += Elapsed; 
+            Timer.Start();
+        }
 
-            Uri tcpUri2 = new Uri($"net.tcp://{serviceAddress2}/{serviceName2}");
+        private void Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Console.WriteLine("Server elapsed " + Id);
+            LeaderId = 0;
+            if (VoteRequested == 0)
+            {
+                VotedFor = Id;
+                Timer.Stop();
+                SendVoteRequest();
+            }
+        }
 
-            EndpointAddress adress2 = new EndpointAddress(tcpUri2);
+        public void SendVoteRequest()
+        {
+            List<int> votes = new List<int>();
+            for(int i = 0; i<Names.Length; i++)
+            {
+                if (i != Id - 1)
+                {
+                    Uri tcpUri = new Uri($"net.tcp://{Addresses[i]}/{Names[i]}");
 
-            NetTcpBinding clientBinding2 = new NetTcpBinding();
+                    EndpointAddress adress = new EndpointAddress(tcpUri);
 
-            ChannelFactory<IService2> factory2 = new ChannelFactory<IService2>(clientBinding2, adress2);
+                    NetTcpBinding clientBinding = new NetTcpBinding();
 
-            IService2 service2 = factory2.CreateChannel();
+                    ChannelFactory<IService1> factory = new ChannelFactory<IService1>(clientBinding, adress);
 
-            string serviceAddress3 = "127.0.0.1:4003";
-            string serviceName3 = "RaftService3";
+                    IService1 service1 = factory.CreateChannel();
+                    votes.Add(service1.SendVoteResponse(Id));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            if (votes.Contains(Id))
+            {
+                ProclaimAsTheLeader();
+            }
+        }
 
-            Uri tcpUri3 = new Uri($"net.tcp://{serviceAddress3}/{serviceName3}");
+        public int SendVoteResponse(int id)
+        {
+            Timer.Stop();
+            if (VotedFor == 0)
+            {
+                VoteRequested = id;
+                VotedFor = VoteRequested;
+                Console.WriteLine(Id + " voted for " + VotedFor);
+                return id;
+            }
+            else
+            {
+                Console.WriteLine(Id + " voted for " + VotedFor);
+                return VotedFor;
+            }
+        }
 
-            EndpointAddress adress3 = new EndpointAddress(tcpUri3);
+        public void ProclaimAsTheLeader()
+        {
+            VotedFor= 0;
+            VoteRequested= 0;
+            LeaderId = Id;
+            bool ok = true;
+            for (int i = 0; i < Names.Length; i++)
+            {
+                if (i != Id - 1)
+                {
+                    Uri tcpUri = new Uri($"net.tcp://{Addresses[i]}/{Names[i]}");
 
-            NetTcpBinding clientBinding3 = new NetTcpBinding();
+                    EndpointAddress adress = new EndpointAddress(tcpUri);
 
-            ChannelFactory<IService3> factory3 = new ChannelFactory<IService3>(clientBinding3, adress3);
+                    NetTcpBinding clientBinding = new NetTcpBinding();
 
-            IService3 service3 = factory3.CreateChannel();
+                    ChannelFactory<IService1> factory = new ChannelFactory<IService1>(clientBinding, adress);
 
-            return service2.GetNumber()*service3.GetNumber()*num;
+                    IService1 service1 = factory.CreateChannel();
+                    ok = ok && service1.RecieveLeader(Id);
+                }
+            }
+            if (ok)
+            {
+                Console.WriteLine(Id + " is the leader.");
+                Timer heart = new Timer(6000);
+                heart.AutoReset= true;
+                heart.Elapsed += (s, e) =>
+                {
+                    SendHeartBeat();
+                };
+                heart.Start();
+            }
+        }
+
+        public void SendHeartBeat()
+        {
+            for (int i = 0; i < Names.Length; i++)
+            {
+                if (i != Id - 1)
+                {
+                    Uri tcpUri = new Uri($"net.tcp://{Addresses[i]}/{Names[i]}");
+
+                    EndpointAddress adress = new EndpointAddress(tcpUri);
+
+                    NetTcpBinding clientBinding = new NetTcpBinding();
+
+                    ChannelFactory<IService1> factory = new ChannelFactory<IService1>(clientBinding, adress);
+
+                    IService1 service1 = factory.CreateChannel();
+                    service1.RecieveHeartBeat(Id);
+                }
+            }
+        }
+
+        public void RecieveHeartBeat(int id)
+        {
+            if (id == LeaderId)
+            {
+                Console.WriteLine(Id + " recieved heart beat from " + LeaderId);
+                RestartTimer();
+            }
+        }
+
+
+        public bool RecieveLeader(int id)
+        {
+            VotedFor = 0;
+            VoteRequested = 0;
+            LeaderId= id;
+            RestartTimer();
+            return true;
+        }
+        private void RestartTimer()
+        {
+            Timer.Stop();
+            Timer.Interval = _TimerNumber;
+            Timer.Start();
         }
     }
 }
