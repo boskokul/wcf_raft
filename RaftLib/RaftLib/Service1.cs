@@ -11,12 +11,15 @@ namespace RaftLib
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Service1 : IService1
     {
+        private const int HeartBeatIterval = 11900;
         public int Id { get; set; }
         public static int LeaderId { get; set; }
         public string[] Addresses { get; set; }
         public string[] Names { get; set; }
         private int _TimerNumber;
         private Timer Timer;
+        private Timer heart;
+        
         public int VoteRequested { get; set; }
         public int VotedFor { get; set; }
         private static Random random = new Random();
@@ -27,7 +30,15 @@ namespace RaftLib
             VotedFor= 0;
             VoteRequested= 0;
             _TimerNumber = 1000*(random.Next(1, 6) + 10);
+            Console.WriteLine("Server " + Id + ": " + _TimerNumber + "ms");
             StartTimer();
+            heart = new Timer(HeartBeatIterval);
+            heart.AutoReset = true;
+            heart.Elapsed += (s, e) =>
+            {
+                SendHeartBeat();
+            };
+            heart.Stop();
         }
 
         private void StartTimer()
@@ -82,6 +93,8 @@ namespace RaftLib
         public int SendVoteResponse(int id)
         {
             Timer.Stop();
+            heart.Stop();
+            heart.Interval = HeartBeatIterval;
             if (VotedFor == 0)
             {
                 VoteRequested = id;
@@ -120,13 +133,9 @@ namespace RaftLib
             }
             if (ok)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(Id + " is the leader.");
-                Timer heart = new Timer(6000);
-                heart.AutoReset= true;
-                heart.Elapsed += (s, e) =>
-                {
-                    SendHeartBeat();
-                };
+                Console.ResetColor();
                 heart.Start();
             }
         }
@@ -155,7 +164,9 @@ namespace RaftLib
         {
             if (id == LeaderId)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine(Id + " recieved heart beat from " + LeaderId);
+                Console.ResetColor();
                 RestartTimer();
             }
         }
@@ -165,6 +176,7 @@ namespace RaftLib
         {
             VotedFor = 0;
             VoteRequested = 0;
+            heart.Stop();
             LeaderId= id;
             RestartTimer();
             return true;
