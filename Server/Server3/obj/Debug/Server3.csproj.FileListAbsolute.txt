@@ -1,8 +1,0 @@
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\bin\Debug\Server3.exe.config
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\bin\Debug\Server3.exe
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\bin\Debug\Server3.pdb
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\obj\Debug\Server3.csproj.AssemblyReference.cache
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\obj\Debug\Server3.csproj.SuggestedBindingRedirects.cache
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\obj\Debug\Server3.csproj.CoreCompileInputs.cache
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\obj\Debug\Server3.exe
-C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\Server\Server3\obj\Debug\Server3.pdb

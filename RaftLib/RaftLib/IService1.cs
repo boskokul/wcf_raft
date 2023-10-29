@@ -24,8 +24,10 @@ namespace RaftLib
         void RecieveHeartBeat(int id);
         [OperationContract]
         bool RecieveLeader(int id);
-
-
+        [OperationContract]
+        void ShutDownLeader();
+        [OperationContract]
+        void RestartTimer();
     }
 
 }

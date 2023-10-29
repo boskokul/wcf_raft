@@ -11,7 +11,8 @@ namespace RaftLib
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class Service1 : IService1
     {
-        private const int HeartBeatIterval = 11900;
+        private const int HeartBeatIterval = 7900;
+        public bool IsActive;
         public int Id { get; set; }
         public static int LeaderId { get; set; }
         public string[] Addresses { get; set; }
@@ -23,13 +24,17 @@ namespace RaftLib
         public int VoteRequested { get; set; }
         public int VotedFor { get; set; }
         private static Random random = new Random();
+
+        public Service1() { IsActive = true; }
+
         public Service1(int id, string[] address, string[] names) {
+            IsActive = true;
             Id = id;
             Addresses= address;
             Names = names;
-            VotedFor= 0;
-            VoteRequested= 0;
-            _TimerNumber = 1000*(random.Next(1, 6) + 10);
+            VotedFor = 0;
+            VoteRequested = 0;
+            _TimerNumber = 1000*(random.Next(1, 6) + 5);
             Console.WriteLine("Server " + Id + ": " + _TimerNumber + "ms");
             StartTimer();
             heart = new Timer(HeartBeatIterval);
@@ -55,14 +60,18 @@ namespace RaftLib
             LeaderId = 0;
             if (VoteRequested == 0)
             {
-                VotedFor = Id;
                 Timer.Stop();
+                VotedFor = Id;
                 SendVoteRequest();
             }
         }
 
         public void SendVoteRequest()
         {
+            if (!IsActive)
+            {
+                return;
+            }
             List<int> votes = new List<int>();
             for(int i = 0; i<Names.Length; i++)
             {
@@ -92,6 +101,10 @@ namespace RaftLib
 
         public int SendVoteResponse(int id)
         {
+            if (!IsActive)
+            {
+                return 0;
+            }
             Timer.Stop();
             heart.Stop();
             heart.Interval = HeartBeatIterval;
@@ -111,9 +124,10 @@ namespace RaftLib
 
         public void ProclaimAsTheLeader()
         {
-            VotedFor= 0;
-            VoteRequested= 0;
-            LeaderId = Id;
+            if (!IsActive)
+            {
+                return;
+            }
             bool ok = true;
             for (int i = 0; i < Names.Length; i++)
             {
@@ -133,6 +147,9 @@ namespace RaftLib
             }
             if (ok)
             {
+                VotedFor = 0;
+                VoteRequested = 0;
+                LeaderId = Id;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(Id + " is the leader.");
                 Console.ResetColor();
@@ -142,6 +159,10 @@ namespace RaftLib
 
         public void SendHeartBeat()
         {
+            if (!IsActive)
+            {
+                return;
+            }
             for (int i = 0; i < Names.Length; i++)
             {
                 if (i != Id - 1)
@@ -162,6 +183,10 @@ namespace RaftLib
 
         public void RecieveHeartBeat(int id)
         {
+            if (!IsActive)
+            {
+                return;
+            }
             if (id == LeaderId)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -171,9 +196,12 @@ namespace RaftLib
             }
         }
 
-
         public bool RecieveLeader(int id)
         {
+            if (!IsActive)
+            {
+                return true;
+            }
             VotedFor = 0;
             VoteRequested = 0;
             heart.Stop();
@@ -181,11 +209,42 @@ namespace RaftLib
             RestartTimer();
             return true;
         }
-        private void RestartTimer()
+        public void RestartTimer()
         {
+            if (!IsActive)
+            {
+                return;
+            }
             Timer.Stop();
             Timer.Interval = _TimerNumber;
             Timer.Start();
+        }
+
+        public void ShutDownLeader()
+        {
+            if (Id == LeaderId)
+            {
+                IsActive = false;
+                LeaderId = 0;
+                Console.WriteLine("Shutting down this leader");
+                for (int i = 0; i < Names.Length; i++)
+                {
+                    if (i != Id - 1)
+                    {
+                        Uri tcpUri = new Uri($"net.tcp://{Addresses[i]}/{Names[i]}");
+
+                        EndpointAddress adress = new EndpointAddress(tcpUri);
+
+                        NetTcpBinding clientBinding = new NetTcpBinding();
+
+                        ChannelFactory<IService1> factory = new ChannelFactory<IService1>(clientBinding, adress);
+
+                        IService1 service1 = factory.CreateChannel();
+                        service1.RestartTimer();
+                    }
+                }
+
+            }
         }
     }
 }
