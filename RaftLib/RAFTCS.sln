@@ -9,10 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaftClient", "RaftClient\Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaftServer", "RaftServer\RaftServer.csproj", "{7B292305-A610-4DE0-BE30-38939BEF854C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaftServer2", "RaftServer2\RaftServer2.csproj", "{9BFCF0D1-7A75-42F9-8D73-92F576B5FAF9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaftServer3", "RaftServer3\RaftServer3.csproj", "{4D810C5D-2D48-4FFD-877F-5EE8B213BA03}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +27,6 @@ Global
 		{7B292305-A610-4DE0-BE30-38939BEF854C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B292305-A610-4DE0-BE30-38939BEF854C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B292305-A610-4DE0-BE30-38939BEF854C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BFCF0D1-7A75-42F9-8D73-92F576B5FAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BFCF0D1-7A75-42F9-8D73-92F576B5FAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BFCF0D1-7A75-42F9-8D73-92F576B5FAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BFCF0D1-7A75-42F9-8D73-92F576B5FAF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D810C5D-2D48-4FFD-877F-5EE8B213BA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D810C5D-2D48-4FFD-877F-5EE8B213BA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D810C5D-2D48-4FFD-877F-5EE8B213BA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D810C5D-2D48-4FFD-877F-5EE8B213BA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,3 +19,10 @@ C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftLib
 C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.csproj.CoreCompileInputs.cache
 C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.dll
 C:\Users\Dušan\Desktop\SchneiderInternship\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.pdb
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.dll.config
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\bin\Debug\RaftLib.pdb
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.csprojAssemblyReference.cache
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.csproj.CoreCompileInputs.cache
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.dll
+C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftLib\obj\Debug\RaftLib.pdb

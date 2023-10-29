@@ -12,8 +12,30 @@ namespace RaftClient
     {
         static void Main(string[] args)
         {
-            string serviceAddress = "127.0.0.1:4001";
-            string serviceName = "RaftService";
+            
+
+            //Testing 
+            Console.Write("Enter id number to shutdown the leader server or enter to close this window:");
+
+            int number = int.Parse(Console.ReadLine());
+            string serviceAddress;
+            string serviceName;
+            switch (number)
+            {
+                case 1:
+                    serviceAddress = "127.0.0.1:4001";
+                    serviceName = "RaftService1";
+                    break;
+                case 2:
+                    serviceAddress = "127.0.0.1:4002";
+                    serviceName = "RaftService2";
+                    break;
+                default:
+                    serviceAddress = "127.0.0.1:4003";
+                    serviceName = "RaftService3";
+                    break;
+            }
+             
 
             Uri tcpUri = new Uri($"net.tcp://{serviceAddress}/{serviceName}");
 
@@ -24,14 +46,7 @@ namespace RaftClient
             ChannelFactory<IService1> factory = new ChannelFactory<IService1>(clientBinding, adress);
 
             IService1 service = factory.CreateChannel();
-
-            //Testing 
-            Console.Write("Enter number: ");
-            int number = int.Parse(Console.ReadLine());
-
-            int sum = service.GetMultiplication(number);
-
-            Console.WriteLine($"Result= {sum}");
+            service.ShutDownLeader();
 
             Console.ReadLine();
         }
