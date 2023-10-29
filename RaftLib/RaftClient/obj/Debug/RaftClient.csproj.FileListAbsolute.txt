@@ -54,3 +54,4 @@ C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftClient\obj\Deb
 C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftClient\obj\Debug\RaftClient.csproj.CopyComplete
 C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftClient\obj\Debug\RaftClient.exe
 C:\Users\bosko\Desktop\praksa\v2\schneider_internship\RaftLib\RaftClient\obj\Debug\RaftClient.pdb
+
